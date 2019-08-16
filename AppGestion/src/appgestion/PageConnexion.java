@@ -242,10 +242,10 @@ public class PageConnexion extends javax.swing.JFrame {
                 requeteP.setString(2,pass);
                 res=requeteP.executeQuery();
                 if(res.next()){
-                    /* FenetreGestion fen =new FenetreGestion();
+                    MenuGestion fen =new MenuGestion();
                     fen.setVisible(true);
                     fen.setLocationRelativeTo(null);
-                    this.setVisible(false);*/
+                    this.setVisible(false);
                     
                      JOptionPane.showMessageDialog( this, "C'est réussi", "Connexion", JOptionPane.INFORMATION_MESSAGE);
                     
