@@ -242,7 +242,7 @@ public class PageConnexion extends javax.swing.JFrame {
                 requeteP.setString(2,pass);
                 res=requeteP.executeQuery();
                 if(res.next()){
-                    MenuGestion fen =new MenuGestion();
+                    Menu fen =new Menu();
                     fen.setVisible(true);
                     fen.setLocationRelativeTo(null);
                     this.setVisible(false);

@@ -44,7 +44,7 @@ public class MenuGestion extends javax.swing.JFrame {
         this.textelisteProgrammer.setForeground(Color.BLACK);
         
         
-        this.createPopupMenu(this);
+       // this.createPopupMenu(this);
         
         
    
@@ -495,6 +495,11 @@ public class MenuGestion extends javax.swing.JFrame {
       int mPosX= MouseInfo.getPointerInfo().getLocation().x;
       int mPosY= MouseInfo.getPointerInfo().getLocation().y;
       
+      this.createPopupMenu(this);
+      this.parametrages.setAlignmentX((float)mPosX);
+       this.parametrages.setAlignmentX((float)mPosY);
+      
+      
       this.parametrages.setVisible(true);
       
       
@@ -625,8 +630,10 @@ public class MenuGestion extends javax.swing.JFrame {
         this.menuItemParametrages = new JMenuItem(
                 "Catégories"
         );
-        
+         System.out.println("Apres cate");
         this.menuItemParametrages.getAccessibleContext().setAccessibleDescription("Catégories");
+        
+        System.out.println("Apres cate");
         
         //Action à faire sur le cmick
         this.menuItemParametrages.addActionListener(new ActionListener(){
@@ -637,7 +644,7 @@ public class MenuGestion extends javax.swing.JFrame {
 //To change body of generated methods, choose Tools | Templates.
             }
         });
-        JMenuItem add = this.parametrages.add(this.menuItemParametrages);
+         this.parametrages.add(this.menuItemParametrages);
         
     };
     
