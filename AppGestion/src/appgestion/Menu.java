@@ -30,19 +30,59 @@ public class Menu extends javax.swing.JFrame {
         ImageIcon iconParametrages = new ImageIcon(getClass().getResource("/menu/home.png"));
         ImageIcon iconPlace2 = new ImageIcon(getClass().getResource("/menu/home.png"));
         ImageIcon iconPlace3 = new ImageIcon(getClass().getResource("/menu/home.png"));
+        ImageIcon iconPlace4 = new ImageIcon(getClass().getResource("/menu/home.png"));
+        ImageIcon iconPlace5 = new ImageIcon(getClass().getResource("/menu/home.png"));
+        
+
         ImageIcon iconSubMenuParametrages = new ImageIcon(getClass().getResource("/menu/search.png"));
-        
+       
         //création des sous menus
-        menu.MenuItem menuParam1 =new menu.MenuItem(iconSubMenuParametrages, "Param 001");
-        menu.MenuItem menuParam2 =new menu.MenuItem(iconSubMenuParametrages, "Param 002");
-        menu.MenuItem menuParam3 =new menu.MenuItem(iconSubMenuParametrages, "Param 003");
+        menu.MenuItem menuParam1 =new menu.MenuItem(iconSubMenuParametrages, "CATEGORIES");
+        menu.MenuItem menuParam2 =new menu.MenuItem(iconSubMenuParametrages, "PRODUITS");
+        menu.MenuItem menuParam3 =new menu.MenuItem(iconSubMenuParametrages, "DEPARTEMENT");
+        menu.MenuItem menuParam4 =new menu.MenuItem(iconSubMenuParametrages, "MAGASIN");
+        menu.MenuItem menuParam5 =new menu.MenuItem(iconSubMenuParametrages, "FOURNISSEURS");
+        
+        ImageIcon iconSubMenuPlace2 = new ImageIcon(getClass().getResource("/menu/search.png"));
+        
+        menu.MenuItem menuParame1 =new menu.MenuItem(iconSubMenuPlace2, "VENTE DE PRODUITS");
+        menu.MenuItem menuParame2 =new menu.MenuItem(iconSubMenuPlace2, "APPROVISIONNEMENT");
+        menu.MenuItem menuParame3 =new menu.MenuItem(iconSubMenuPlace2, "TRANSFERT DE PRODUITS");
+        menu.MenuItem menuParame4 =new menu.MenuItem(iconSubMenuPlace2, "RETOUR AUX FOURNISSEURS");
         
         
-        menu.MenuItem menuParametrages=new menu.MenuItem(iconParametrages,"Parametrages",menuParam1,menuParam2,menuParam3);
-        menu.MenuItem menuPlace2=new menu.MenuItem(iconParametrages,"Menu Place 2");
-        menu.MenuItem menuPlace3=new menu.MenuItem(iconParametrages,"Menu Place 3");
+         ImageIcon iconSubMenuPlace3 = new ImageIcon(getClass().getResource("/menu/search.png"));
         
-        addMenu(menuParametrages,menuPlace2,menuPlace3);
+        menu.MenuItem menuParae1 =new menu.MenuItem(iconSubMenuPlace3, "STOCK PAR MAGASIN");
+        menu.MenuItem menuParae2 =new menu.MenuItem(iconSubMenuPlace3, "STOCK DE TOUS LES MAGASINS");
+        
+         ImageIcon iconSubMenuPlace4 = new ImageIcon(getClass().getResource("/menu/search.png"));
+        
+        menu.MenuItem menuPara1 =new menu.MenuItem(iconSubMenuPlace4, "RAPPORT DE VENTES");
+        menu.MenuItem menuPara2 =new menu.MenuItem(iconSubMenuPlace4, "APPROVISIONNEMENT PAR FOURNISSEUR");
+        menu.MenuItem menuPara3 =new menu.MenuItem(iconSubMenuPlace4, "RETOUR PAR FOURNISSEUR");
+        menu.MenuItem menuPara4 =new menu.MenuItem(iconSubMenuPlace4, "RECAPITILATIF DES APPROVISIONNEMENTS");
+        menu.MenuItem menuPara5 =new menu.MenuItem(iconSubMenuPlace4, "TABLEAU ¨PERIODIQUE GLOBALE");
+        menu.MenuItem menuPara6 =new menu.MenuItem(iconSubMenuPlace4, "TABLEAU SYNTHESE MAGASIN");
+        menu.MenuItem menuPara7 =new menu.MenuItem(iconSubMenuPlace4, "TABLEAU SYNTHESE GLOBALE");
+        menu.MenuItem menuPara8 =new menu.MenuItem(iconSubMenuPlace4, "SYNTHESE ECARTS");
+        
+        
+        ImageIcon iconSubMenuPlace5 = new ImageIcon(getClass().getResource("/menu/search.png"));
+        
+        menu.MenuItem menuPar1 =new menu.MenuItem(iconSubMenuPlace5, "Parame 001");
+        
+        
+        
+        menu.MenuItem menuParametrages=new menu.MenuItem(iconParametrages,"PARAMETRAGES",menuParam1,menuParam2,menuParam3,menuParam4,menuParam5);
+        menu.MenuItem menuPlace2=new menu.MenuItem(iconPlace3,"SAISIE DE DONNES",menuParame1,menuParame2,menuParame3,menuParame4);
+        menu.MenuItem menuPlace3=new menu.MenuItem(iconPlace4,"CONSULTATION DES STOCKS",menuParae1,menuParae2);
+        menu.MenuItem menuPlace4=new menu.MenuItem(iconPlace5,"EDITION DES ETATS",menuPara1,menuPara2,menuPara3,menuPara4,menuPara5,menuPara6,menuPara7,menuPara8);
+        menu.MenuItem menuPlace5=new menu.MenuItem(iconPlace5,"OUTILS",menuPar1);
+        
+        
+        
+        addMenu(menuParametrages,menuPlace2,menuPlace3,menuPlace4,menuPlace5);
     }
     
     private void addMenu(menu.MenuItem... Menu){
