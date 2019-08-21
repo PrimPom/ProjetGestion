@@ -6,6 +6,7 @@
 package menu;
 
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,10 +43,14 @@ public class MenuItem extends javax.swing.JPanel {
      * Creates new form MenuItem
      */
     private final ArrayList<MenuItem> subMenu =new ArrayList<>();
-    public MenuItem(Icon icon, String menuName, MenuItem... subMenu) {
+    private ActionListener act;
+    public MenuItem(Icon icon, String menuName, ActionListener act,MenuItem... subMenu) {
         initComponents();
         IbIcon.setIcon(icon);
         IbName.setText(menuName);
+        if(act!=null){
+            this.act=act;
+        }
         this.setSize(new Dimension(Integer.MAX_VALUE,45));
         this.setMaximunSize(new Dimension(Integer.MAX_VALUE,45));
         this.setMinimumSize(new Dimension(Integer.MAX_VALUE,45));
@@ -119,6 +124,9 @@ public class MenuItem extends javax.swing.JPanel {
         }else{
             showMenu();
             setShowing(true);
+        }
+        if(act!=null){
+            act.actionPerformed(null);
         }
         
     }//GEN-LAST:event_formMousePressed

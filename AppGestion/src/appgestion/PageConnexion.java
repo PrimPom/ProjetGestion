@@ -247,7 +247,7 @@ public class PageConnexion extends javax.swing.JFrame {
                     fen.setLocationRelativeTo(null);
                     this.setVisible(false);
                     
-                     JOptionPane.showMessageDialog( this, "C'est réussi", "Connexion", JOptionPane.INFORMATION_MESSAGE);
+                     //JOptionPane.showMessageDialog( this, "C'est réussi", "Connexion", JOptionPane.INFORMATION_MESSAGE);
                     
                 }else{
                     JOptionPane.showMessageDialog( this, "Vous n'êtes pas autorisé à vous connecter", "Connexion", JOptionPane.ERROR_MESSAGE);

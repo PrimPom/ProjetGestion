@@ -5,9 +5,13 @@
  */
 package appgestion;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,53 +40,101 @@ public class Menu extends javax.swing.JFrame {
 
         ImageIcon iconSubMenuParametrages = new ImageIcon(getClass().getResource("/menu/search.png"));
        
-        //création des sous menus
-        menu.MenuItem menuParam1 =new menu.MenuItem(iconSubMenuParametrages, "CATEGORIES");
-        menu.MenuItem menuParam2 =new menu.MenuItem(iconSubMenuParametrages, "PRODUITS");
-        menu.MenuItem menuParam3 =new menu.MenuItem(iconSubMenuParametrages, "DEPARTEMENT");
-        menu.MenuItem menuParam4 =new menu.MenuItem(iconSubMenuParametrages, "MAGASIN");
-        menu.MenuItem menuParam5 =new menu.MenuItem(iconSubMenuParametrages, "FOURNISSEURS");
+        //création des sous menus Parametrages
+        menu.MenuItem param_Categorie =new menu.MenuItem(iconSubMenuParametrages, "Catégories",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelBody.add(new body.Categories());
+                panelBody.repaint();
+                panelBody.revalidate();
+            }
+        });
+        menu.MenuItem param_Produit =new menu.MenuItem(iconSubMenuParametrages, "Produtis",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelBody.repaint();
+                panelBody.add(new body.Produits());
+                panelBody.repaint();
+                panelBody.revalidate();
+            }
+        });
+        menu.MenuItem param_Departement =new menu.MenuItem(iconSubMenuParametrages, "Departement",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelBody.add(new body.Departement());
+                panelBody.repaint();
+                panelBody.revalidate();
+            }
+        });
+        menu.MenuItem param_Magasin =new menu.MenuItem(iconSubMenuParametrages, "Magasin",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelBody.add(new body.Magasin());
+                panelBody.repaint();
+                panelBody.revalidate();
+            }
+        });
+        menu.MenuItem param_Fournisseur =new menu.MenuItem(iconSubMenuParametrages, "Fournisseurs",new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelBody.add(new body.Fournisseurs());
+                panelBody.repaint();
+                panelBody.revalidate();
+            }
+        });
         
         ImageIcon iconSubMenuPlace2 = new ImageIcon(getClass().getResource("/menu/search.png"));
         
-        menu.MenuItem menuParame1 =new menu.MenuItem(iconSubMenuPlace2, "VENTE DE PRODUITS");
-        menu.MenuItem menuParame2 =new menu.MenuItem(iconSubMenuPlace2, "APPROVISIONNEMENT");
-        menu.MenuItem menuParame3 =new menu.MenuItem(iconSubMenuPlace2, "TRANSFERT DE PRODUITS");
-        menu.MenuItem menuParame4 =new menu.MenuItem(iconSubMenuPlace2, "RETOUR AUX FOURNISSEURS");
+        
+        // Sous menus saisies donnees
+        menu.MenuItem saisie_Vente =new menu.MenuItem(iconSubMenuPlace2, "VENTE DE PRODUITS".toLowerCase(),null);
+        menu.MenuItem saisie_Approvisionnement =new menu.MenuItem(iconSubMenuPlace2, "APPROVISIONNEMENT".toLowerCase(),null);
+        menu.MenuItem saisie_Transfert =new menu.MenuItem(iconSubMenuPlace2, "TRANSFERT DE PRODUITS".toLowerCase(),null);
+        menu.MenuItem saisie_Retour =new menu.MenuItem(iconSubMenuPlace2, "RETOUR AUX FOURNISSEURS".toLowerCase(),null);
         
         
          ImageIcon iconSubMenuPlace3 = new ImageIcon(getClass().getResource("/menu/search.png"));
         
-        menu.MenuItem menuParae1 =new menu.MenuItem(iconSubMenuPlace3, "STOCK PAR MAGASIN");
-        menu.MenuItem menuParae2 =new menu.MenuItem(iconSubMenuPlace3, "STOCK DE TOUS LES MAGASINS");
+         
+         //Sous menus consultations de stocks
+        menu.MenuItem consul_Stock_par_Magasin =new menu.MenuItem(iconSubMenuPlace3, "STOCK PAR MAGASIN".toLowerCase(),null);
+        menu.MenuItem consul_Stock_tous_Magasin =new menu.MenuItem(iconSubMenuPlace3, "STOCK DE TOUS LES MAGASINS".toLowerCase(),null);
         
          ImageIcon iconSubMenuPlace4 = new ImageIcon(getClass().getResource("/menu/search.png"));
         
-        menu.MenuItem menuPara1 =new menu.MenuItem(iconSubMenuPlace4, "RAPPORT DE VENTES");
-        menu.MenuItem menuPara2 =new menu.MenuItem(iconSubMenuPlace4, "APPROVISIONNEMENT PAR FOURNISSEUR");
-        menu.MenuItem menuPara3 =new menu.MenuItem(iconSubMenuPlace4, "RETOUR PAR FOURNISSEUR");
-        menu.MenuItem menuPara4 =new menu.MenuItem(iconSubMenuPlace4, "RECAPITILATIF DES APPROVISIONNEMENTS");
-        menu.MenuItem menuPara5 =new menu.MenuItem(iconSubMenuPlace4, "TABLEAU ¨PERIODIQUE GLOBALE");
-        menu.MenuItem menuPara6 =new menu.MenuItem(iconSubMenuPlace4, "TABLEAU SYNTHESE MAGASIN");
-        menu.MenuItem menuPara7 =new menu.MenuItem(iconSubMenuPlace4, "TABLEAU SYNTHESE GLOBALE");
-        menu.MenuItem menuPara8 =new menu.MenuItem(iconSubMenuPlace4, "SYNTHESE ECARTS");
+         
+         // Sous menus editions etats
+        menu.MenuItem edition_Rapport_de_Vente =new menu.MenuItem(iconSubMenuPlace4, "RAPPORT DE VENTES".toLowerCase(),null);
+        menu.MenuItem edition_Appro_par_Fournisseur =new menu.MenuItem(iconSubMenuPlace4, "APPROVISIONNEMENT PAR FOURNISSEUR".toLowerCase(),null);
+        menu.MenuItem edition_Retour_par_Fournisseur =new menu.MenuItem(iconSubMenuPlace4, "RETOUR PAR FOURNISSEUR".toLowerCase(),null);
+        menu.MenuItem edition_Recap_des_Appro =new menu.MenuItem(iconSubMenuPlace4, "RECAPITULATIF DES APPROVISIONNEMENTS".toLowerCase(),null);
+        menu.MenuItem edition_Tableau_Periodiq_Globale =new menu.MenuItem(iconSubMenuPlace4, "TABLEAU ¨PERIODIQUE GLOBALE".toLowerCase(),null);
+        menu.MenuItem edition_Tableau_Synthese_Magasin =new menu.MenuItem(iconSubMenuPlace4, "TABLEAU SYNTHESE MAGASIN".toLowerCase(),null);
+        menu.MenuItem edition_Tableau_Synthese_Globale =new menu.MenuItem(iconSubMenuPlace4, "TABLEAU SYNTHESE GLOBALE".toLowerCase(),null);
+        menu.MenuItem edition_Synthese_Ecarts =new menu.MenuItem(iconSubMenuPlace4, "SYNTHESE ECARTS".toLowerCase(),null);
         
         
         ImageIcon iconSubMenuPlace5 = new ImageIcon(getClass().getResource("/menu/search.png"));
         
-        menu.MenuItem menuPar1 =new menu.MenuItem(iconSubMenuPlace5, "Parame 001");
+        menu.MenuItem outilsExemples =new menu.MenuItem(iconSubMenuPlace5, "Parame 001",null);
         
         
         
-        menu.MenuItem menuParametrages=new menu.MenuItem(iconParametrages,"PARAMETRAGES",menuParam1,menuParam2,menuParam3,menuParam4,menuParam5);
-        menu.MenuItem menuPlace2=new menu.MenuItem(iconPlace3,"SAISIE DE DONNES",menuParame1,menuParame2,menuParame3,menuParame4);
-        menu.MenuItem menuPlace3=new menu.MenuItem(iconPlace4,"CONSULTATION DES STOCKS",menuParae1,menuParae2);
-        menu.MenuItem menuPlace4=new menu.MenuItem(iconPlace5,"EDITION DES ETATS",menuPara1,menuPara2,menuPara3,menuPara4,menuPara5,menuPara6,menuPara7,menuPara8);
-        menu.MenuItem menuPlace5=new menu.MenuItem(iconPlace5,"OUTILS",menuPar1);
+        menu.MenuItem menuParametrages=new menu.MenuItem(iconParametrages,"PARAMETRAGES",null,param_Categorie ,param_Produit,param_Departement,param_Magasin,param_Fournisseur);
+        menuParametrages.setBackground(Color.GREEN);
+        
+        menu.MenuItem menuSaisieDonne=new menu.MenuItem(iconPlace3,"SAISIE DE DONNES",null,saisie_Vente,saisie_Approvisionnement,saisie_Transfert,saisie_Retour);
+        menuSaisieDonne.setBackground(Color.YELLOW);
+        menu.MenuItem menuConsultationStock=new menu.MenuItem(iconPlace4,"CONSULTATION DES STOCKS",null,consul_Stock_par_Magasin ,consul_Stock_tous_Magasin);
+        menuConsultationStock.setBackground(Color.red);
+        menu.MenuItem menuEditionEtat=new menu.MenuItem(iconPlace5,"EDITION DES ETATS",null,edition_Rapport_de_Vente,edition_Appro_par_Fournisseur,edition_Retour_par_Fournisseur,edition_Recap_des_Appro,edition_Tableau_Periodiq_Globale,edition_Tableau_Synthese_Magasin,edition_Tableau_Synthese_Globale,edition_Synthese_Ecarts );
+        menuEditionEtat.setBackground(Color.green);
+        menu.MenuItem menuOutil=new menu.MenuItem(iconPlace5,"OUTILS",null,outilsExemples);
+        menuOutil.setBackground(Color.yellow);
         
         
         
-        addMenu(menuParametrages,menuPlace2,menuPlace3,menuPlace4,menuPlace5);
+        addMenu(menuParametrages,menuSaisieDonne,menuConsultationStock,menuEditionEtat,menuOutil);
     }
     
     private void addMenu(menu.MenuItem... Menu){
@@ -113,6 +165,7 @@ public class Menu extends javax.swing.JFrame {
         panelBody = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 600));
 
         panelHeader.setBackground(new java.awt.Color(51, 51, 255));
         panelHeader.setPreferredSize(new java.awt.Dimension(1042, 50));
@@ -135,6 +188,7 @@ public class Menu extends javax.swing.JFrame {
 
         jScrollPane1.setBorder(null);
 
+        menus.setBackground(new java.awt.Color(255, 255, 255));
         menus.setLayout(new javax.swing.BoxLayout(menus, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane1.setViewportView(menus);
 
@@ -152,18 +206,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(panelMenu, java.awt.BorderLayout.LINE_START);
 
         panelBody.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout panelBodyLayout = new javax.swing.GroupLayout(panelBody);
-        panelBody.setLayout(panelBodyLayout);
-        panelBodyLayout.setHorizontalGroup(
-            panelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 792, Short.MAX_VALUE)
-        );
-        panelBodyLayout.setVerticalGroup(
-            panelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 614, Short.MAX_VALUE)
-        );
-
+        panelBody.setLayout(new java.awt.BorderLayout());
         getContentPane().add(panelBody, java.awt.BorderLayout.CENTER);
 
         setSize(new java.awt.Dimension(1064, 720));
