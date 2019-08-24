@@ -52,7 +52,7 @@ public class Menu extends javax.swing.JFrame {
         menu.MenuItem param_Produit =new menu.MenuItem(iconSubMenuParametrages, "Produtis",new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panelBody.repaint();
+                
                 panelBody.add(new body.Produits());
                 panelBody.repaint();
                 panelBody.revalidate();
@@ -165,7 +165,7 @@ public class Menu extends javax.swing.JFrame {
         panelBody = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 600));
+        setPreferredSize(new java.awt.Dimension(800, 500));
 
         panelHeader.setBackground(new java.awt.Color(51, 51, 255));
         panelHeader.setPreferredSize(new java.awt.Dimension(1042, 50));
