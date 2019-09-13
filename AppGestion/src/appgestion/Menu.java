@@ -174,7 +174,7 @@ public class Menu extends javax.swing.JFrame {
         panelHeader.setLayout(panelHeaderLayout);
         panelHeaderLayout.setHorizontalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1042, Short.MAX_VALUE)
+            .addGap(0, 828, Short.MAX_VALUE)
         );
         panelHeaderLayout.setVerticalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +200,7 @@ public class Menu extends javax.swing.JFrame {
         );
         panelMenuLayout.setVerticalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
         );
 
         getContentPane().add(panelMenu, java.awt.BorderLayout.LINE_START);
@@ -209,7 +209,7 @@ public class Menu extends javax.swing.JFrame {
         panelBody.setLayout(new java.awt.BorderLayout());
         getContentPane().add(panelBody, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(1064, 720));
+        setSize(new java.awt.Dimension(850, 582));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
