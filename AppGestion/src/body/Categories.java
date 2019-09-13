@@ -5,6 +5,15 @@
  */
 package body;
 
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author primp
@@ -32,7 +41,7 @@ public class Categories extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        EditNomCategorie = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -42,6 +51,11 @@ public class Categories extends javax.swing.JPanel {
         jLabel2.setOpaque(true);
 
         jButton1.setText("Ajouter");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton4.setText("Actualiser");
 
@@ -54,9 +68,9 @@ public class Categories extends javax.swing.JPanel {
 
         jLabel1.setText("Nom de la catégorie");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        EditNomCategorie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                EditNomCategorieActionPerformed(evt);
             }
         });
 
@@ -90,7 +104,7 @@ public class Categories extends javax.swing.JPanel {
                             .addGap(24, 24, 24)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(36, 36, 36)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EditNomCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(43, 43, 43)
                             .addComponent(jButton1))))
                 .addGap(0, 196, Short.MAX_VALUE))
@@ -104,7 +118,7 @@ public class Categories extends javax.swing.JPanel {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EditNomCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -121,12 +135,67 @@ public class Categories extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void EditNomCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditNomCategorieActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_EditNomCategorieActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+           String nomCategorie;
+      
+    
+       nomCategorie=this.EditNomCategorie.getText();
+      ;
+      
+       
+       
+       if(nomCategorie.matches("")){
+           
+               this.EditNomCategorie.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+          
+          
+       }
+       else{
+              this.EditNomCategorie.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+               classes.Categories categorie =new classes.Categories(0,nomCategorie);
+              
+            
+            appgestion.ConnexionBD connexion= new appgestion.ConnexionBD();
+            Connection con = connexion.se_connecterBD();
+            String SQL="insert into  categories values ( ?)";
+            PreparedStatement requeteP=null;
+            
+            
+            
+            try {
+                requeteP=con.prepareStatement(SQL);
+                //requeteP.setInt(1, categorie.getNum());
+                requeteP.setString(1, categorie.getNomCategorie());
+                
+         
+               int executeUpdate = requeteP.executeUpdate();     
+               System.out.println("CInsert :"+executeUpdate);
+               if(executeUpdate==1){
+                  //JOptionPane d = new JOptionPane();
+                    JOptionPane.showMessageDialog( this, "Catégorie Ajoutée", "Ajout de catégorie", JOptionPane.INFORMATION_MESSAGE);
+                     this.EditNomCategorie.setText("");
+                    
+                   ;
+               }else{
+                 //  JOptionPane d = new JOptionPane();
+                    JOptionPane.showMessageDialog( this, "La catégorie existe déjà", "Ajout de catégorie", JOptionPane.ERROR_MESSAGE);
+               }
+                 connexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(appgestion.ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+                   
+       }
+    }//GEN-LAST:event_jButton1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField EditNomCategorie;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -134,6 +203,5 @@ public class Categories extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
