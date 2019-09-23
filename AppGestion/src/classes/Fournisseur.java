@@ -10,5 +10,19 @@ package classes;
  * @author primp
  */
 public class Fournisseur {
+    private String nomForunisseur;
+
+    public Fournisseur(String nomForunisseur) {
+        this.nomForunisseur = nomForunisseur;
+    }
+    
+
+    public String getNomForunisseur() {
+        return nomForunisseur;
+    }
+
+    public void setNomForunisseur(String nomForunisseur) {
+        this.nomForunisseur = nomForunisseur;
+    }
     
 }
