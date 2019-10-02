@@ -8,11 +8,14 @@ package body;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,6 +28,48 @@ public class Categories extends javax.swing.JPanel {
      */
     public Categories() {
         initComponents();
+        
+        this.affichageJtable();
+    }
+      public ArrayList<classes.Categories> getCategoriesList(){
+        ArrayList<classes.Categories> categoriesList=new ArrayList<classes.Categories>();
+        
+           appgestion.ConnexionBD connexion= new appgestion.ConnexionBD();
+            Connection con = connexion.se_connecterBD();
+            String SQL="SELECT * FROM `Categories`";//nom as 'Nom Vaccin', age as 'Age de prise', role as 'Role du vaccin'
+            ResultSet res;
+            PreparedStatement requeteP=null;
+            try {
+                requeteP=con.prepareStatement(SQL);
+                res=requeteP.executeQuery();
+                 classes.Categories categorie;
+                while(res.next()){
+                    categorie =new classes.Categories(0,res.getString("categorie"));
+                            categoriesList.add(categorie);
+                }
+                 con.close();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(appgestion.ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        return categoriesList;
+    }
+    
+//AFFICHAGE DANS LE JTAPLE
+    public void affichageJtable(){
+        ArrayList<classes.Categories> list = getCategoriesList();
+        DefaultTableModel model = (DefaultTableModel)this.table.getModel();
+        Object[] row =new Object[5];
+        
+        for(int i=0;i<list.size();i++){
+            list.get(i).setNum(i+1);
+            row[0]=list.get(i).getNum();
+            row[1]=list.get(i).getNomCategorie();
+           
+            
+            model.addRow(row);
+        }
     }
 
     /**
@@ -43,7 +88,7 @@ public class Categories extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         EditNomCategorie = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
 
         jLabel2.setBackground(new java.awt.Color(30, 132, 196));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -74,18 +119,15 @@ public class Categories extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Id", "Catégories"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -202,6 +244,6 @@ public class Categories extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

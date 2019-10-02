@@ -10,7 +10,7 @@ package classes;
  * @author primp
  */
 public class Categories {
-    public int num;
+    public int num=0;
     public String nomCategorie;
 
     public int getNum() {

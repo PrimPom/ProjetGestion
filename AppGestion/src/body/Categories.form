@@ -117,10 +117,10 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="table">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="2" rowCount="4">
+              <Table columnCount="2" rowCount="0">
                 <Column editable="true" title="Id" type="java.lang.Object"/>
                 <Column editable="true" title="Cat&#xe9;gories" type="java.lang.Object"/>
               </Table>
